@@ -1,0 +1,451 @@
+/* ==========================================================================
+   Portfólio Pessoal - Antony Almir Guedes do Monte
+   Folha de estilos única (Aula 8 - CSS3, Variáveis, Box Model, Flexbox, RWD)
+   ========================================================================== */
+
+/* 1. Variáveis de cores (Paleta de 3 cores + neutros) e fonte */
+:root {
+  --cor-primaria: #1b7a43;      /* Verde esmeralda (destaque e ações) */
+  --cor-secundaria: #0f172a;    /* Azul-ardósia escuro (títulos e contraste) */
+  --cor-fundo: #f8fafc;         /* Cinza muito claro (fundo principal) */
+  --cor-superficie: #ffffff;    /* Fundo dos cartões e tabela */
+  --cor-texto: #334155;         /* Texto principal legível */
+  --cor-borda: #e2e8f0;         /* Bordas sutis */
+  --fonte-principal: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Tema escuro opcional acionado pelo botão ou preferência do sistema */
+[data-theme="dark"] {
+  --cor-primaria: #22c55e;
+  --cor-secundaria: #f1f5f9;
+  --cor-fundo: #0b1120;
+  --cor-superficie: #1e293b;
+  --cor-texto: #cbd5e1;
+  --cor-borda: #334155;
+}
+
+/* 2. Reset e configurações globais (Box Model) */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--fonte-principal);
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: var(--cor-primaria);
+  text-decoration: none;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.container {
+  width: 100%;
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+main.container {
+  flex: 1;
+  padding-top: 32px;
+  padding-bottom: 48px;
+}
+
+/* 3. Cabeçalho e Menu de Navegação (Flexbox + Hover) */
+.cabecalho {
+  background-color: var(--cor-superficie);
+  border-bottom: 1px solid var(--cor-borda);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.cabecalho-conteudo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+
+.marca {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--cor-secundaria);
+  text-decoration: none;
+}
+
+.marca span {
+  color: var(--cor-primaria);
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.menu a {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 6px;
+  color: var(--cor-secundaria);
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.menu a:hover,
+.menu a.ativo {
+  background-color: var(--cor-primaria);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.btn-tema {
+  padding: 7px 12px;
+  border: 1px solid var(--cor-borda);
+  border-radius: 6px;
+  background-color: var(--cor-fundo);
+  color: var(--cor-secundaria);
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.btn-tema:hover {
+  border-color: var(--cor-primaria);
+}
+
+/* 4. Seção de Apresentação (Hero com Flexbox) */
+.apresentacao {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  margin-bottom: 44px;
+}
+
+.apresentacao-texto {
+  flex: 1.2;
+}
+
+.apresentacao-imagem {
+  flex: 1;
+}
+
+.apresentacao-imagem img {
+  border-radius: 12px;
+  border: 1px solid var(--cor-borda);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+}
+
+.etiqueta {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--cor-primaria);
+  margin-bottom: 8px;
+}
+
+h1, h2, h3 {
+  color: var(--cor-secundaria);
+  line-height: 1.25;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+h2 {
+  font-size: 1.45rem;
+  margin-bottom: 16px;
+}
+
+.subtitulo {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--cor-primaria);
+  margin-bottom: 14px;
+}
+
+.acoes-hero {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+/* Botões */
+.btn-primario,
+.btn-secundario {
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  border: 2px solid var(--cor-primaria);
+  transition: transform 0.15s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-primario {
+  background-color: var(--cor-primaria);
+  color: #ffffff;
+}
+
+.btn-primario:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+
+.btn-secundario {
+  background-color: transparent;
+  color: var(--cor-primaria);
+}
+
+.btn-secundario:hover {
+  background-color: var(--cor-primaria);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* 5. Seções e Cartões (Box Model + Flexbox) */
+.secao {
+  margin-bottom: 40px;
+}
+
+.descricao-secao {
+  margin-bottom: 24px;
+}
+
+.grade-cartoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.cartao {
+  flex: 1 1 280px;
+  background-color: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: 10px;
+  padding: 22px;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cartao:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+}
+
+.cartao h2,
+.cartao h3 {
+  margin-bottom: 12px;
+}
+
+.tag {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--cor-primaria);
+  margin-bottom: 8px;
+}
+
+.tech-usadas {
+  margin-top: 10px;
+  margin-bottom: 12px;
+  font-size: 0.92rem;
+}
+
+.link-cartao {
+  font-weight: 600;
+}
+
+.lista-skills,
+.lista-detalhes {
+  padding-left: 18px;
+}
+
+.lista-skills li,
+.lista-detalhes li {
+  margin-bottom: 8px;
+}
+
+.lista-detalhes span {
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+
+/* 6. Tabela de Projetos */
+.tabela-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  background-color: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: 10px;
+}
+
+.tabela-projetos {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.tabela-projetos th,
+.tabela-projetos td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--cor-borda);
+}
+
+.tabela-projetos thead th {
+  background-color: var(--cor-primaria);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.tabela-projetos tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* 7. Página e Formulário de Contato */
+.contato-layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.contato-info {
+  flex: 1 1 280px;
+}
+
+.formulario {
+  flex: 1.6 1 360px;
+}
+
+.campo {
+  margin-bottom: 16px;
+}
+
+.campo label {
+  display: block;
+  font-weight: 600;
+  color: var(--cor-secundaria);
+  margin-bottom: 6px;
+}
+
+.campo input[type="text"],
+.campo input[type="email"],
+.campo input[type="tel"],
+.campo select,
+.campo textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--cor-borda);
+  border-radius: 6px;
+  background-color: var(--cor-fundo);
+  color: var(--cor-secundaria);
+  font-family: inherit;
+  font-size: 1rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus {
+  outline: none;
+  border-color: var(--cor-primaria);
+  box-shadow: 0 0 0 3px rgba(27, 122, 67, 0.18);
+}
+
+.campo-checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.campo-checkbox input {
+  margin-top: 4px;
+}
+
+.campo-checkbox label {
+  margin-bottom: 0;
+  font-weight: 400;
+  font-size: 0.92rem;
+}
+
+/* 8. Rodapé */
+.rodape {
+  background-color: var(--cor-superficie);
+  border-top: 1px solid var(--cor-borda);
+  padding: 20px 0;
+  font-size: 0.92rem;
+}
+
+.rodape-conteudo {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.rodape-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* 9. Responsividade para telas de até 600px */
+@media (max-width: 600px) {
+  .cabecalho-conteudo {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .menu {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .apresentacao {
+    flex-direction: column;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  .rodape-conteudo {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
